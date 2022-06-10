@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
-import { loginUser, signout } from "../../api/lib/UsersAPI"
+import { loginUser, signout } from "../../api/lib/TransactionsAPI"
 // import axios from './api/axios';
 const LOGIN_URL = '/auth';
 
@@ -24,6 +24,8 @@ const Login = () => {
             navigate('/veikla');
         }
     }, [])
+
+
 
 
     useEffect(() => {

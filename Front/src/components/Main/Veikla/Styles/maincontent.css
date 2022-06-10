@@ -222,9 +222,8 @@
     color: rgb(77, 77, 77);
 }
 
-.filter,
-.add,
-.download {
+
+.add {
     -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
 }

@@ -3,7 +3,7 @@ import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icon
 import {Link, useNavigate} from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import axios from './api/axios';
-import { createNewUser } from '../../api/lib/UsersAPI';
+import { createNewUser } from '../../api/lib/TransactionsAPI';
 import "./register.css"
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -13,7 +13,7 @@ const Register = () => {
     const userRef = useRef();
     const errRef = useRef();
 
-    const [name, setUser] = useState('');
+    const [username, setUser] = useState('');
     const [validName, setValidName] = useState(false);
     const [userFocus, setUserFocus] = useState(false);
 
@@ -22,7 +22,7 @@ const Register = () => {
     const [pwdFocus, setPwdFocus] = useState(false);
 
     const [email, setEmail] = useState("")
-    const [role] = useState("users")
+    const [roles] = useState("users")
 
     const [matchPwd, setMatchPwd] = useState('');
     const [validMatch, setValidMatch] = useState(false);
@@ -40,8 +40,8 @@ const Register = () => {
     }, [])
 
     useEffect(() => {
-        setValidName(USER_REGEX.test(name));
-    }, [name])
+        setValidName(USER_REGEX.test(username));
+    }, [username])
 
     useEffect(() => {
         setValidPwd(PWD_REGEX.test(password));
@@ -50,16 +50,16 @@ const Register = () => {
 
     useEffect(() => {
         setErrMsg('');
-    }, [name, password, matchPwd])
+    }, [username, password, matchPwd])
 
     const handleSubmit = async  (e, data) => {
-        e.preventDefault();
-    
-        await createNewUser(name, password, email)
-        setSuccess(true)
-      }
+          e.preventDefault();
+      
+          await createNewUser(username, password, email, roles)
+          setSuccess(true)
+        }
 
-    return (    
+    return (
         <div className='login'>
             {success ? (
                 <section className="prisijungimas rounded">
@@ -73,25 +73,25 @@ const Register = () => {
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <h1>Registracija</h1>
                     <form onSubmit={handleSubmit}>
-                        <label htmlFor="name">
+                        <label htmlFor="username">
                             Slapyvardis:
                             <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validName || !name ? "hide" : "invalid"} />
+                            <FontAwesomeIcon icon={faTimes} className={validName || !username ? "hide" : "invalid"} />
                         </label>
                         <input
                             type="text"
-                            id="name"
+                            id="username"
                             ref={userRef}
                             autoComplete="off"
                             onChange={(e) => setUser(e.target.value)}
-                            value={name}
+                            value={username}
                             required
                             aria-invalid={validName ? "false" : "true"}
                             aria-describedby="uidnote"
                             onFocus={() => setUserFocus(true)}
                             onBlur={() => setUserFocus(false)}
                         />
-                        <p id="uidnote" className={userFocus && name && !validName ? "instructions" : "offscreen"}>
+                        <p id="uidnote" className={userFocus && username && !validName ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                             Nuo 4 iki 20 simbolių.<br />
                             Turi prasidėti raide.<br />
