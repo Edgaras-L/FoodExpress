@@ -10,7 +10,7 @@ const app = require("./app");
 // );
 
 const DB =
-  "mongodb+srv://FoodExpress:luko7049123@cluster0.a7qscul.mongodb.net/FoodExpress?retryWrites=true&w=majority";
+  "mongodb+srv://FoodExpress:luko7049123@cluster0.a7qscul.mongodb.net/users?retryWrites=true&w=majority";
 mongoose
   .connect(DB, {
     useNewUrlParser: true,

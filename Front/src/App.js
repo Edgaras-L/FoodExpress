@@ -8,7 +8,7 @@ import MainAdminTable from './components/Main/Valdyba/MainAdminTable';
 import Home from './components/HomePage/Home';
 import Login from './components/AccountPages/Login';
 import Register from './components/AccountPages/Register';
-// import MainContainer from './components/Main/Veikla/MainContainer';
+import MainContainer from './components/Main/Veikla/MainContainer';
 import ErrorPage from './components/ErrorPages/ErrorPage';
 import ListUsers from './components/Main/Valdyba/ListUsers';
 
@@ -21,7 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/*" element={<ErrorPage />} />
-        {/* <Route path="/veikla" element={<MainContainer />} /> */}
+        <Route path="/veikla" element={<MainContainer />} />
         <Route path="/admin" element={<MainAdminTable />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />

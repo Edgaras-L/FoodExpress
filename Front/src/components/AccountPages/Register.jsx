@@ -52,14 +52,12 @@ const Register = () => {
         setErrMsg('');
     }, [name, password, matchPwd])
 
-    const handleSubmit = async  (e) => {
-          e.preventDefault();
-          console.log("1")
-          await createNewUser(name, password, email, role)
-          console.log("2")
-          setSuccess(true)
-          console.log("3")
-        }
+    const handleSubmit = async  (e, data) => {
+        e.preventDefault();
+    
+        await createNewUser(name, password, email)
+        setSuccess(true)
+      }
 
     return (    
         <div className='login'>

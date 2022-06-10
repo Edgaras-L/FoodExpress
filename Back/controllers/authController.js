@@ -2,6 +2,11 @@ const User = require("./../models/userModel");
 const { promisify } = require("util"); // yra jau toks, siųstis nereikia
 const jwt = require("jsonwebtoken");
 
+// const signToken = (id) => {
+//   return jwt.sign({ id }, "labas", {
+//     expiresIn: "90d",
+//   });
+// };
 
 exports.signup = async (req, res) => {
   try {
